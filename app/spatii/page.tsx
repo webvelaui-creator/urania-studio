@@ -17,7 +17,6 @@ export default function SpacesPage() {
         eyebrow="Spații / Urania Studio"
         title="Spații diferite pentru proiecte diferite"
         intro="Trei cadre cu ritmuri distincte, gândite pentru scenă, sunet și conversație."
-        mediaLabel="SPACE IMAGE"
       />
       <section className="listing-section" aria-label="Spații disponibile">
         <div className="listing-grid listing-grid-three">

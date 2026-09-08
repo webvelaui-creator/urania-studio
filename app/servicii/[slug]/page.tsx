@@ -36,7 +36,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           <h1>{service.title}</h1>
           <p className="detail-intro">{service.longDescription}</p>
         </div>
-        <MediaPlaceholder label={service.mediaLabel} variant="hero" />
+        <MediaPlaceholder label={service.mediaLabel} image={service.image} variant="hero" />
       </section>
 
       <section className="detail-content">

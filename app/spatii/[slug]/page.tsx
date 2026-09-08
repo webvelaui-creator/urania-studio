@@ -36,7 +36,7 @@ export default async function SpaceDetailPage({ params }: PageProps) {
           <h1>{space.title}</h1>
           <p className="detail-intro">{space.longDescription}</p>
         </div>
-        <MediaPlaceholder label={space.mediaLabel} variant="hero" />
+        <MediaPlaceholder label={space.mediaLabel} image={space.image} variant="hero" />
       </section>
 
       <section className="gallery-block" aria-labelledby="gallery-title">

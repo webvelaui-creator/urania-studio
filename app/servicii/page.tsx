@@ -17,7 +17,6 @@ export default function ServicesPage() {
         eyebrow="Servicii / Urania Studio"
         title="Tot ce ai nevoie dincolo de spațiu"
         intro="Suport atent pentru ca proiectul să funcționeze — de la pregătire și configurație până la desfășurare și documentare."
-        mediaLabel="SERVICE IMAGE"
       />
       <section className="listing-section" aria-label="Servicii disponibile">
         <div className="listing-grid">
