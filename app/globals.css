@@ -2,6 +2,7 @@
 
 :root {
   --black-cherry: #1c0101;
+  --oil-black: #080b0b;
   --oxblood: #290505;
   --merlot: #3a0513;
   --mahogany: #742307;
@@ -106,7 +107,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
 .contact-strip { display: grid; grid-template-columns: 0.5fr 1.2fr auto; align-items: center; gap: 2rem; padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem); border: 1px solid var(--line); background: var(--oxblood); }
 .button { min-width: 9rem; padding: 0.9rem 1.4rem; border: 1px solid var(--muted-bronze); color: var(--champagne); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; transition: background 220ms var(--ease), border-color 220ms var(--ease); }
 .button:hover { border-color: var(--champagne); background: var(--mahogany); }
-.site-footer { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr auto; gap: 2rem; margin-top: 0; padding: 3rem 0 4rem; color: var(--text-muted); font-size: 0.75rem; }
+.site-footer { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr auto; gap: 2rem; width: 100%; margin-top: 0; padding: 1.5rem max(1rem, calc((100vw - 112rem) / 2)) 2rem; background: var(--oil-black); color: var(--text-muted); font-size: 0.75rem; }
 .site-footer p { margin: 0.7rem 0 0; }
 .footer-mark { color: var(--champagne); font-family: var(--font-display), serif; font-size: 2rem; line-height: 1; }
 .site-footer nav, .site-footer address { display: flex; align-items: start; flex-direction: column; gap: 0.45rem; font-style: normal; }
