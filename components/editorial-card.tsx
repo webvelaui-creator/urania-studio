@@ -13,7 +13,11 @@ export function EditorialCard({ item, href, index }: EditorialCardProps) {
 
   return (
     <Link className="editorial-card" href={href}>
-      <MediaPlaceholder label={item.mediaLabel} image={item.image} />
+      <MediaPlaceholder
+        label={item.mediaLabel}
+        image={item.image}
+        sizes="(max-width: 500px) 7.5rem, (max-width: 800px) 11rem, 18rem"
+      />
       <div className="editorial-card-copy">
         <p className="card-label">{String(index + 1).padStart(2, '0')} / {item.eyebrow.split('/')[0]}</p>
         <h2>{item.title}</h2>

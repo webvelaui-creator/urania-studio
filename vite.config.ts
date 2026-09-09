@@ -2,7 +2,7 @@ import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
-import hostingConfig from './.openai/hosting.json';
+import hostingConfig from './.openai/hosting.json' with { type: 'json' };
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -11,6 +11,16 @@ const { d1, r2 } = hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
+
+/**
+ * Vite refuses dev requests whose Host header it does not recognise, which blocks
+ * previewing through a tunnel or reverse proxy. Opt in per machine rather than widening
+ * the default: `DEV_ALLOWED_HOSTS=.example.dev npm run dev` (a leading dot covers
+ * subdomains). Left unset — the normal case — Vite's own protection stays intact.
+ */
+const devAllowedHosts = process.env.DEV_ALLOWED_HOSTS?.split(',')
+  .map((host) => host.trim())
+  .filter(Boolean);
 
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
@@ -46,9 +56,12 @@ export default defineConfig(async () => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      ...(devAllowedHosts?.length ? { allowedHosts: devAllowedHosts } : {}),
+      ...(isCodexSeatbeltSandbox
+        ? { watch: { useFsEvents: false, usePolling: true } }
+        : {}),
+    },
     plugins: [
       vinext(),
       sites(),

@@ -7,10 +7,22 @@ type MediaPlaceholderProps = {
   className?: string;
   image?: SiteImage;
   priority?: boolean;
+  sizes?: string;
 };
 
-export function MediaPlaceholder({ label, variant = 'card', className = '', image, priority = false }: MediaPlaceholderProps) {
+export function MediaPlaceholder({
+  label,
+  variant = 'card',
+  className = '',
+  image,
+  priority = false,
+  sizes,
+}: MediaPlaceholderProps) {
   if (image) {
+    const imageSizes = sizes ?? (variant === 'hero'
+      ? '(max-width: 800px) 100vw, 55vw'
+      : '(max-width: 800px) 100vw, 33vw');
+
     return (
       <div className={`media-asset media-${variant} ${className}`}>
         <Image
@@ -18,7 +30,7 @@ export function MediaPlaceholder({ label, variant = 'card', className = '', imag
           alt={image.alt}
           width={2048}
           height={2048}
-          sizes={variant === 'hero' ? '(max-width: 800px) 100vw, 55vw' : '(max-width: 800px) 100vw, 33vw'}
+          sizes={imageSizes}
           loading={priority ? 'eager' : 'lazy'}
           decoding={priority ? 'sync' : 'async'}
           fetchPriority={priority ? 'high' : 'auto'}

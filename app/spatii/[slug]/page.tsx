@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ContactCta } from '@/components/contact-cta';
 import { MediaPlaceholder } from '@/components/media-placeholder';
 import { getSpace, spaces } from '@/data/site-content';
+import { absoluteUrl, createPageMetadata, JsonLd } from '@/lib/seo';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -15,20 +15,51 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const space = getSpace(slug);
   if (!space) return {};
-  return {
+  return createPageMetadata({
     title: space.metadata.title,
     description: space.metadata.description,
-    alternates: { canonical: `/spatii/${space.slug}/` },
-  };
+    path: `/spatii/${space.slug}/`,
+    image: space.image?.src,
+    imageAlt: space.image?.alt,
+  });
 }
 
 export default async function SpaceDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const space = getSpace(slug);
   if (!space) notFound();
+  const path = `/spatii/${space.slug}/`;
+  const spaceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Place',
+        name: `${space.title} — Urania Studio`,
+        description: space.metadata.description,
+        url: absoluteUrl(path),
+        image: space.image ? absoluteUrl(space.image.src) : undefined,
+        containedInPlace: { '@id': absoluteUrl('/#organization') },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Strada Horea, nr. 4',
+          addressLocality: 'Cluj-Napoca',
+          addressCountry: 'RO',
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Acasă', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Spații', item: absoluteUrl('/spatii/') },
+          { '@type': 'ListItem', position: 3, name: space.title, item: absoluteUrl(path) },
+        ],
+      },
+    ],
+  };
 
   return (
     <main id="content">
+      <JsonLd data={spaceSchema} />
       <section className="detail-hero">
         <div className="detail-heading">
           <Link className="back-link" href="/spatii/">← Toate spațiile</Link>
@@ -70,7 +101,6 @@ export default async function SpaceDetailPage({ params }: PageProps) {
         </section>
       ) : null}
 
-      <ContactCta type="spatiu" interest={space.slug} label={space.cta} />
     </main>
   );
 }

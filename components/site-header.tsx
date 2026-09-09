@@ -11,6 +11,8 @@ export function SiteHeader() {
 
   return (
     <header className="site-header" data-urania-header>
+      {/* Reading progress, driven by the --u-progress custom property in SiteMotion. */}
+      <span className="header-progress" aria-hidden="true" />
       <Link className="wordmark" href="/" aria-label="Urania Studio — pagina principală">
         <span>Urania</span>
         <small>Studio / Cluj-Napoca</small>

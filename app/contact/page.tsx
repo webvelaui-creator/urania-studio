@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact-form';
 import { contactDetails } from '@/data/site-content';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Contact',
   description: 'Spune-ne despre proiectul tău și află cum îl poate găzdui sau susține Urania Studio.',
-  alternates: { canonical: '/contact/' },
-};
+  path: '/contact/',
+});
 
 type ContactPageProps = {
   searchParams: Promise<{ type?: string; interest?: string }>;

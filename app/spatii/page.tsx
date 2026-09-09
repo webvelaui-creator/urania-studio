@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import { ContactCta } from '@/components/contact-cta';
 import { EditorialCard } from '@/components/editorial-card';
 import { PageHero } from '@/components/page-hero';
 import { spaces } from '@/data/site-content';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Spații de găzduire',
   description: 'Descoperă cele trei spații Urania Studio și cadrul potrivit pentru proiectul tău.',
-  alternates: { canonical: '/spatii/' },
-};
+  path: '/spatii/',
+  image: '/images/urania/scena.webp',
+  imageAlt: 'Scena Black Box Urania',
+});
 
 export default function SpacesPage() {
   return (
@@ -25,7 +26,6 @@ export default function SpacesPage() {
           ))}
         </div>
       </section>
-      <ContactCta type="spatiu" label="Verifică disponibilitatea" />
     </main>
   );
 }

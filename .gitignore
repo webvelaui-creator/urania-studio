@@ -41,3 +41,4 @@ next-env.d.ts
 *.zip
 *.tsbuildinfo
 local-server.log
+.vinext-dev.log

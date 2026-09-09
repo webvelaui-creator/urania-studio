@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ContactCta } from '@/components/contact-cta';
 import { MediaPlaceholder } from '@/components/media-placeholder';
 import { getService, services } from '@/data/site-content';
+import { absoluteUrl, createPageMetadata, JsonLd } from '@/lib/seo';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -15,20 +15,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return {
+  return createPageMetadata({
     title: service.metadata.title,
     description: service.metadata.description,
-    alternates: { canonical: `/servicii/${service.slug}/` },
-  };
+    path: `/servicii/${service.slug}/`,
+    image: service.image?.src,
+    imageAlt: service.image?.alt,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  const path = `/servicii/${service.slug}/`;
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        name: service.title,
+        description: service.metadata.description,
+        url: absoluteUrl(path),
+        image: service.image ? absoluteUrl(service.image.src) : undefined,
+        provider: { '@id': absoluteUrl('/#organization') },
+        areaServed: { '@type': 'City', name: 'Cluj-Napoca' },
+        inLanguage: 'ro-RO',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Acasă', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Servicii', item: absoluteUrl('/servicii/') },
+          { '@type': 'ListItem', position: 3, name: service.title, item: absoluteUrl(path) },
+        ],
+      },
+    ],
+  };
 
   return (
     <main id="content">
+      <JsonLd data={serviceSchema} />
       <section className="detail-hero">
         <div className="detail-heading">
           <Link className="back-link" href="/servicii/">← Toate serviciile</Link>
@@ -52,7 +79,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {service.partnerNote ? <aside className="partner-note"><p className="eyebrow">Partener tehnic</p><p>{service.partnerNote}</p></aside> : null}
         </div>
       </section>
-      <ContactCta type="serviciu" interest={service.slug} label={service.cta} />
     </main>
   );
 }

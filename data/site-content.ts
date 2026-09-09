@@ -43,7 +43,7 @@ export const services: SiteItem[] = [
     longDescription:
       'Coordonare și suport tehnic pentru pregătirea și desfășurarea proiectelor, de la setup și repetiții până la eveniment.',
     mediaLabel: 'SERVICE IMAGE',
-    image: { src: '/images/urania/Carousel_transparent.png', alt: 'Obiect teatral Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/carousel.webp', alt: 'Obiect teatral Urania', objectPosition: 'center' },
     cta: 'Cere detalii',
     features: [
       'Suport tehnic pentru repetiții și reprezentații',
@@ -66,7 +66,7 @@ export const services: SiteItem[] = [
     longDescription:
       'De la soundcheck și microfonie până la lumini de scenă și ambientale, configurația este adaptată fiecărui proiect.',
     mediaLabel: 'SERVICE IMAGE',
-    image: { src: '/images/urania/saxofon_transparent.png', alt: 'Saxofon Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/saxofon.webp', alt: 'Saxofon Urania', objectPosition: 'center' },
     cta: 'Cere ofertă',
     features: [
       'Sonorizare și microfonie',
@@ -92,7 +92,7 @@ export const services: SiteItem[] = [
     longDescription:
       'Suport pentru integrarea transmisiunii online în evenimente și proiecte hibride, configurat în raport cu formatul întâlnirii.',
     mediaLabel: 'SERVICE IMAGE',
-    image: { src: '/images/urania/tv_transparent.png', alt: 'Televizor vintage Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/tv.webp', alt: 'Televizor vintage Urania', objectPosition: 'center' },
     cta: 'Cere ofertă',
     features: [
       'Infrastructură pentru streaming',
@@ -116,7 +116,7 @@ export const services: SiteItem[] = [
     longDescription:
       'Documentare foto-video pentru proiecte și evenimente, disponibilă la cerere și stabilită în funcție de nevoile fiecărui format.',
     mediaLabel: 'SERVICE IMAGE',
-    image: { src: '/images/urania/rola film_transparent.png', alt: 'Rolă de film Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/rola-film.webp', alt: 'Rolă de film Urania', objectPosition: 'center' },
     cta: 'Cere detalii',
     features: [
       'Documentare de eveniment la cerere',
@@ -138,7 +138,7 @@ export const services: SiteItem[] = [
     longDescription:
       'Adaptăm configurația și fluxul spațiului la tipul proiectului, păstrând o abordare practică și atentă la desfășurare.',
     mediaLabel: 'SERVICE IMAGE',
-    image: { src: '/images/urania/Scena_transparent.png', alt: 'Scena Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/scena.webp', alt: 'Scena Urania', objectPosition: 'center' },
     cta: 'Cere ofertă',
     features: [
       'Configurarea spațiului și a layoutului',
@@ -165,7 +165,7 @@ export const spaces: SiteItem[] = [
     longDescription:
       'Spațiul principal Urania: o sală reconfigurabilă cu scenă și așezare adaptabilă, pregătită să găzduiască formate diverse fără a le impune un tipar.',
     mediaLabel: 'SPACE IMAGE',
-    image: { src: '/images/urania/Scena_transparent.png', alt: 'Scena — Black Box Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/scena.webp', alt: 'Scena — Black Box Urania', objectPosition: 'center' },
     cta: 'Verifică disponibilitatea',
     sections: [
       { title: 'Artele spectacolului', items: ['Teatru independent', 'Performance contemporan', 'Teatru-dans', 'Stand-up', 'Improvizație', 'Poezie și lecturi performative', 'Cabaret'] },
@@ -200,7 +200,7 @@ export const spaces: SiteItem[] = [
     longDescription:
       'Un spațiu concentrat, dedicat muzicii, sunetului, repetițiilor și sesiunilor creative în care ascultarea este punctul de plecare.',
     mediaLabel: 'SPACE IMAGE',
-    image: { src: '/images/urania/vinil_transparent.png', alt: 'Disc de vinil Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/vinil.webp', alt: 'Disc de vinil Urania', objectPosition: 'center' },
     cta: 'Cere detalii',
     sections: [
       { title: 'Potrivit pentru', items: ['Repetiții', 'Sesiuni muzicale', 'Lucru creativ audio', 'Proiecte centrate pe sunet'] },
@@ -221,7 +221,7 @@ export const spaces: SiteItem[] = [
     longDescription:
       'Un spațiu dedicat conversațiilor, interviurilor și producției de conținut audio-video, cu o configurație care va fi definită împreună cu proiectul.',
     mediaLabel: 'SPACE IMAGE',
-    image: { src: '/images/urania/microfon_transparent.png', alt: 'Microfon vintage Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/microfon.webp', alt: 'Microfon vintage Urania', objectPosition: 'center' },
     cta: 'Cere detalii',
     sections: [
       { title: 'Potrivit pentru', items: ['Podcasturi', 'Interviuri', 'Conversații filmate', 'Conținut spoken-word'] },

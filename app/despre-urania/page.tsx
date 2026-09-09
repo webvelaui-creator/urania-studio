@@ -1,13 +1,12 @@
-import type { Metadata } from 'next';
-import { ContactCta } from '@/components/contact-cta';
 import { MediaPlaceholder } from '@/components/media-placeholder';
 import { PageHero } from '@/components/page-hero';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Despre Urania',
   description: 'Urania Studio este un spațiu flexibil pentru expresie, întâlniri și experiențe culturale în Cluj-Napoca.',
-  alternates: { canonical: '/despre-urania/' },
-};
+  path: '/despre-urania/',
+});
 
 const statements = [
   'Un punct de întâlnire.',
@@ -54,7 +53,6 @@ export default function AboutPage() {
         <h2 id="urania-is-title" className="sr-only">Urania este</h2>
         <ol>{statements.map((statement) => <li key={statement}>{statement}</li>)}</ol>
       </section>
-      <ContactCta />
     </main>
   );
 }

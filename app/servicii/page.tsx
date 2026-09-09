@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import { ContactCta } from '@/components/contact-cta';
 import { EditorialCard } from '@/components/editorial-card';
 import { PageHero } from '@/components/page-hero';
 import { services } from '@/data/site-content';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Servicii',
   description: 'Servicii și suport pentru proiecte culturale, artistice și evenimente la Urania Studio.',
-  alternates: { canonical: '/servicii/' },
-};
+  path: '/servicii/',
+  image: '/images/urania/carousel.webp',
+  imageAlt: 'Obiect teatral Urania',
+});
 
 export default function ServicesPage() {
   return (
@@ -30,7 +31,6 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
-      <ContactCta type="serviciu" label="Cere o ofertă" />
     </main>
   );
 }
