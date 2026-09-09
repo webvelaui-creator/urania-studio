@@ -28,6 +28,7 @@ const entries = [
     description: 'Servicii și suport pentru proiecte culturale, artistice și evenimente.',
     cta: 'Descoperă serviciile',
     href: '/servicii/',
+    image: '/images/urania/carousel.webp',
   },
   {
     label: '02 / LOCUL',
@@ -35,6 +36,7 @@ const entries = [
     description: 'Descoperă spațiile Urania și găsește cadrul potrivit pentru proiectul tău.',
     cta: 'Descoperă spațiile',
     href: '/spatii/',
+    image: '/images/urania/scena.webp',
   },
   {
     label: '03 / URANIA',
@@ -42,6 +44,7 @@ const entries = [
     description: 'O privire în universul Urania.',
     cta: 'Descoperă Urania',
     href: '/despre-urania/',
+    image: '/images/urania/rola-film.webp',
   },
 ];
 
@@ -106,8 +109,17 @@ export default function Home() {
                   <p>{entry.description}</p>
                 </CardContent>
                 <CardFooter className="entry-card-footer">
-                  <span className="text-link">{entry.cta}</span>
+                  <span className="text-link">{entry.cta}<span aria-hidden="true"> ↗</span></span>
                 </CardFooter>
+                <Image
+                  className="entry-card-art"
+                  src={entry.image}
+                  alt=""
+                  width={360}
+                  height={360}
+                  sizes="(max-width: 800px) 10rem, 15rem"
+                  aria-hidden="true"
+                />
               </Card>
             </Link>
           ))}
