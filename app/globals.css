@@ -109,6 +109,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
 }
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 4rem); }
 .section-heading h2, .contact-strip h2 { max-width: 12ch; font-size: clamp(2.8rem, 5vw, 5rem); line-height: 0.98; }
+.section-heading h2 { max-width: none; white-space: nowrap; }
 .entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 2.5rem); }
 .entry-card { display: block; min-width: 0; height: 100%; }
 .entry-card-surface {
@@ -332,6 +333,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
   .hero__goddess { min-height: 20rem; }
   h1 { font-size: clamp(3.1rem, 15vw, 4.2rem); }
   .section-heading { align-items: start; flex-direction: column; gap: 1rem; }
+  .section-heading h2 { white-space: normal; }
   .site-footer { grid-template-columns: 1fr; padding-inline: 0.5rem; }
   .footer-meta { align-self: auto; }
   .editorial-card, .editorial-card:nth-child(even) { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.25rem; }

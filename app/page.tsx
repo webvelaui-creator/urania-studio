@@ -40,7 +40,7 @@ const entries = [
   },
   {
     label: '03 / URANIA',
-    title: 'În spatele scenei',
+    title: 'Despre Urania',
     description: 'O privire în universul Urania.',
     cta: 'Descoperă Urania',
     href: '/despre-urania/',
