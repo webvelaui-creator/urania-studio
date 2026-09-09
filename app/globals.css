@@ -91,11 +91,14 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
 .media-asset.media-hero { min-height: 30rem; border-left: 1px solid var(--line); }
 .media-asset.media-gallery { min-height: 26rem; }
 
-.entry-section { padding: clamp(5rem, 9vw, 10rem) 0; }
+.entry-section {
+  padding: clamp(5rem, 9vw, 10rem) 0;
+  background: linear-gradient(to bottom, var(--black-cherry) 0%, var(--black-cherry) 55%, var(--oil-black) 100%);
+}
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 4rem); }
 .section-heading h2, .contact-strip h2 { max-width: 12ch; font-size: clamp(2.8rem, 5vw, 5rem); line-height: 0.98; }
 .entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 4rem); }
-.entry-card { display: flex; min-width: 0; flex-direction: column; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); transition: transform 240ms var(--ease), color 240ms var(--ease); }
+.entry-card { display: flex; min-width: 0; flex-direction: column; padding-bottom: 1.5rem; transition: transform 240ms var(--ease), color 240ms var(--ease); }
 .entry-card:hover { transform: translateY(-0.35rem); }
 .media-card { aspect-ratio: 4 / 3; border-radius: 999px 999px 0 0; border-bottom: 1px solid var(--line); }
 .entry-card:nth-child(2) .media-card { background: var(--merlot); }
