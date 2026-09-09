@@ -1,5 +1,13 @@
 import { HeroIntro } from '@/components/hero-intro';
-import { MediaPlaceholder } from '@/components/media-placeholder';
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { createPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,7 +28,6 @@ const entries = [
     description: 'Servicii și suport pentru proiecte culturale, artistice și evenimente.',
     cta: 'Descoperă serviciile',
     href: '/servicii/',
-    image: { src: '/images/urania/carousel.webp', alt: 'Obiect teatral Urania' },
   },
   {
     label: '02 / LOCUL',
@@ -28,7 +35,6 @@ const entries = [
     description: 'Descoperă spațiile Urania și găsește cadrul potrivit pentru proiectul tău.',
     cta: 'Descoperă spațiile',
     href: '/spatii/',
-    image: { src: '/images/urania/scena.webp', alt: 'Scena — Black Box Urania' },
   },
   {
     label: '03 / URANIA',
@@ -36,9 +42,6 @@ const entries = [
     description: 'O privire în universul Urania.',
     cta: 'Descoperă Urania',
     href: '/despre-urania/',
-    // Uses existing artwork so the homepage carries no Phase 2 placeholder; swap for
-    // final backstage photography when it is available.
-    image: { src: '/images/urania/rola-film.webp', alt: 'Rolă de film Urania' },
   },
 ];
 
@@ -93,15 +96,19 @@ export default function Home() {
         <div className="entry-grid">
           {entries.map((entry) => (
             <Link className="entry-card" href={entry.href} key={entry.href}>
-              <MediaPlaceholder label={entry.image.alt} image={entry.image} />
-              <div className="card-copy">
-                <p className="card-label">{entry.label}</p>
-                <h3>{entry.title}</h3>
-                <p>{entry.description}</p>
-                <span className="text-link">
-                  {entry.cta}<span aria-hidden="true"> ↗</span>
-                </span>
-              </div>
+              <Card className="entry-card-surface" size="sm">
+                <CardHeader className="entry-card-header">
+                  <CardDescription className="card-label">{entry.label}</CardDescription>
+                  <CardAction className="entry-card-index" aria-hidden="true">↗</CardAction>
+                  <CardTitle className="entry-card-title">{entry.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="entry-card-content">
+                  <p>{entry.description}</p>
+                </CardContent>
+                <CardFooter className="entry-card-footer">
+                  <span className="text-link">{entry.cta}</span>
+                </CardFooter>
+              </Card>
             </Link>
           ))}
         </div>
