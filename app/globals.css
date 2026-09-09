@@ -103,7 +103,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
   left: 50%;
   width: 100vw;
   height: clamp(2rem, 4vw, 3.5rem);
-  background: linear-gradient(to bottom, var(--black-cherry), var(--oil-black));
+  background: linear-gradient(to bottom, transparent, var(--oil-black));
   content: '';
   transform: translateX(-50%);
 }
