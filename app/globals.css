@@ -118,17 +118,17 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
   height: 100%;
   gap: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0;
+  border: 0;
+  border-radius: 1rem;
   background: linear-gradient(145deg, rgba(58, 5, 19, 0.92), rgba(8, 11, 11, 0.9));
   color: var(--text);
-  box-shadow: none;
+  box-shadow: 0 0.3rem 0.75rem rgba(0, 0, 0, 0.28);
   transition: border-color 320ms var(--ease-soft), transform 320ms var(--ease-settle), background 320ms var(--ease-soft);
 }
 .entry-card:hover .entry-card-surface {
-  border-color: var(--champagne);
   background: linear-gradient(145deg, rgba(116, 35, 7, 0.5), rgba(8, 11, 11, 0.92));
-  transform: translateY(-0.3rem);
+  box-shadow: 0 0.45rem 1rem rgba(0, 0, 0, 0.34);
+  transform: translateY(-0.2rem);
 }
 .entry-card:nth-child(2) .entry-card-surface { background: linear-gradient(145deg, rgba(74, 8, 29, 0.94), rgba(8, 11, 11, 0.9)); }
 .entry-card:nth-child(3) .entry-card-surface { background: linear-gradient(145deg, rgba(40, 5, 5, 0.94), rgba(8, 11, 11, 0.9)); }
@@ -152,9 +152,9 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
   min-height: 3.5rem;
   margin-top: auto;
   padding: 1rem 1.25rem;
-  border-color: rgba(167, 128, 92, 0.25);
+  border: 0;
   border-radius: 0;
-  background: rgba(8, 11, 11, 0.36);
+  background: transparent;
 }
 .entry-card-art {
   position: absolute;
