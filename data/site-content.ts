@@ -27,9 +27,9 @@ export type SiteImage = {
 };
 
 export const navigation = [
+  { label: 'Despre Urania', href: '/despre-urania/' },
   { label: 'Servicii', href: '/servicii/' },
   { label: 'Spații', href: '/spatii/' },
-  { label: 'Despre Urania', href: '/despre-urania/' },
   { label: 'Contact', href: '/contact/' },
 ];
 

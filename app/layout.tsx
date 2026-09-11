@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { SiteMotion } from '@/components/site-motion';
+import { WhatsAppButton } from '@/components/whatsapp-button';
 import { absoluteUrl, defaultSocialImage, JsonLd, siteUrl } from '@/lib/seo';
 import './globals.css';
 
@@ -132,6 +133,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <SiteFooter />
+        <WhatsAppButton />
         <SiteMotion />
       </body>
     </html>

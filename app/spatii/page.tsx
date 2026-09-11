@@ -1,7 +1,7 @@
-import { EditorialCard } from '@/components/editorial-card';
-import { PageHero } from '@/components/page-hero';
-import { spaces } from '@/data/site-content';
+import { SpaceSelector } from '@/components/space-selector';
 import { createPageMetadata } from '@/lib/seo';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata = createPageMetadata({
   title: 'Spații de găzduire',
@@ -14,17 +14,19 @@ export const metadata = createPageMetadata({
 export default function SpacesPage() {
   return (
     <main id="content">
-      <PageHero
-        eyebrow="Spații / Urania Studio"
-        title="Spații diferite pentru proiecte diferite"
-        intro="Trei cadre cu ritmuri distincte, gândite pentru scenă, sunet și conversație."
-      />
-      <section className="listing-section" aria-label="Spații disponibile">
-        <div className="listing-grid listing-grid-three">
-          {spaces.map((space, index) => (
-            <EditorialCard item={space} href={`/spatii/${space.slug}/`} index={index} key={space.slug} />
-          ))}
+      <section className="spaces-showcase" aria-label="Spații disponibile">
+        <div className="spaces-showcase__heading">
+          <div>
+            <div className="spaces-showcase__title-row">
+              <Link className="spaces-showcase__back" href="/" aria-label="Înapoi la pagina principală">
+                <Image src="/images/left-arrow.png" alt="" width={16} height={16} />
+              </Link>
+              <h1>Spații</h1>
+            </div>
+          </div>
+          <p>Trei cadre cu ritmuri distincte, gândite pentru scenă, sunet și conversație.</p>
         </div>
+        <SpaceSelector />
       </section>
     </main>
   );

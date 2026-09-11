@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 /** A quick visual beat before the interface arrives. */
-const HOLD_MS = 120;
+const HOLD_MS = 1000;
 /** Length of the settle. Must match the `reveal` transform transition in `globals.css`. */
 const REVEAL_MS = 2000;
 /** The intro never waits longer than this for the artwork to decode. */
@@ -56,7 +56,6 @@ export function HeroIntro() {
 
     window.scrollTo(0, 0);
 
-    const start = performance.now();
     const decoded = image.complete
       ? Promise.resolve()
       : new Promise<void>((resolve) => {
@@ -67,7 +66,8 @@ export function HeroIntro() {
 
     void decoded.then(() => {
       if (cancelled) return;
-      later(Math.max(HOLD_MS - (performance.now() - start), 0), settle);
+      image.dataset.heroImageReady = 'true';
+      later(HOLD_MS, settle);
     });
 
     // Any deliberate interaction starts the settle early; it is never cut short, so the

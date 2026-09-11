@@ -24,8 +24,12 @@ export function SiteHeader() {
         aria-controls="mobile-navigation"
         onClick={() => setOpen((value) => !value)}
       >
-        <span>{open ? 'Închide' : 'Meniu'}</span>
-        <i aria-hidden="true" />
+        <span className="sr-only">{open ? 'Închide meniul' : 'Deschide meniul'}</span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path className="menu-button__line menu-button__line--top" d="M4 12H20" />
+          <path className="menu-button__line menu-button__line--middle" d="M4 12H20" />
+          <path className="menu-button__line menu-button__line--bottom" d="M4 12H20" />
+        </svg>
       </button>
       <nav className="desktop-nav" aria-label="Navigație principală">
         {navigation.map((item) => (

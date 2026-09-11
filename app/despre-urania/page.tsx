@@ -1,4 +1,6 @@
 import { MediaPlaceholder } from '@/components/media-placeholder';
+import { CircularStories } from '@/components/circular-stories';
+import { LoopingVideo } from '@/components/looping-video';
 import { PageHero } from '@/components/page-hero';
 import { createPageMetadata } from '@/lib/seo';
 
@@ -15,6 +17,33 @@ const statements = [
   'Un loc în care arta, gândirea și oamenii se întâlnesc firesc.',
 ];
 
+// Add the future file under `public/videos/` and set its path here.
+const ABOUT_HERO_VIDEO: string | null = null;
+
+const studioStories = [
+  {
+    category: 'Proiecte / scenă',
+    title: 'Formate live care aduc publicul aproape',
+    description: 'De la reprezentații și performance, la concerte intime și seri de conversație, Urania oferă un cadru care se adaptează fiecărui proiect.',
+    image: '/images/urania/scena.webp',
+    imageAlt: 'Scena Urania Studio',
+  },
+  {
+    category: 'Proiecte / sunet',
+    title: 'Sunet și ritm pentru idei care se aud',
+    description: 'Construim configurații pentru sesiuni muzicale, repetiții, listening sessions și întâlniri în care sunetul devine parte din experiență.',
+    image: '/images/urania/vinil.webp',
+    imageAlt: 'Disc de vinil Urania Studio',
+  },
+  {
+    category: 'Proiecte / conținut',
+    title: 'Conversații care rămân cu tine',
+    description: 'Podcasturi, interviuri și conținut audio-video găsesc aici un cadru concentrat, atent la voce, imagine și oamenii din fața camerei.',
+    image: '/images/urania/microfon.webp',
+    imageAlt: 'Microfon Urania Studio',
+  },
+];
+
 export default function AboutPage() {
   return (
     <main id="content">
@@ -22,8 +51,18 @@ export default function AboutPage() {
         eyebrow="În spatele scenei"
         title="Urania nu este o sală clasică"
         intro="Nu este doar o scenă. Nu este doar o galerie. Este un spațiu flexibil pentru forme contemporane de expresie, întâlniri și experiențe culturale."
-        mediaLabel="BACKSTAGE IMAGE"
+        media={<LoopingVideo src={ABOUT_HERO_VIDEO} label="Atmosfera Urania Studio" />}
+        fullBleedMedia
       />
+
+      <section className="studio-journal" aria-labelledby="studio-journal-title">
+        <div className="studio-journal__heading">
+          <p className="eyebrow">Jurnal Urania</p>
+          <h2 id="studio-journal-title">Ce construim împreună</h2>
+          <p>O selecție de formate, direcții și momente care dau ritm studioului.</p>
+        </div>
+        <CircularStories stories={studioStories} />
+      </section>
 
       <section className="manifesto">
         <p className="eyebrow">În ce credem</p>

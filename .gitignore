@@ -42,3 +42,4 @@ next-env.d.ts
 *.tsbuildinfo
 local-server.log
 .vinext-dev.log
+.vinext-dev-error.log
