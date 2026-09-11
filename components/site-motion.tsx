@@ -9,7 +9,6 @@ const BLOCKS = ['main > section:not([data-urania-hero])'];
 /** Repeating items that ease in one after another inside a revealed block. */
 const ITEMS = [
   '.entry-grid > *',
-  '.listing-grid > *',
   '.listing-grid-three > *',
   '.audience-grid > p',
   '.urania-is li',
@@ -18,6 +17,9 @@ const ITEMS = [
   '.about-gallery > *',
   '.gallery-block > *',
 ];
+
+/** Service cards begin their reveal just before they reach the lower edge of the viewport. */
+const SERVICE_ITEMS = ['.listing-grid > *'];
 
 /**
  * Adds the site's motion layer: scroll-linked header state, a reading progress rule, and
@@ -71,17 +73,29 @@ export function SiteMotion() {
       { rootMargin: '0px 0px -12% 0px', threshold: 0.06 },
     );
 
-    const observe = (selector: string, stagger: boolean) => {
+    const serviceObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('u-in');
+          serviceObserver.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px 8% 0px', threshold: 0.01 },
+    );
+
+    const observe = (selector: string, stagger: boolean, targetObserver = observer) => {
       document.querySelectorAll<HTMLElement>(selector).forEach((node, index) => {
         if (node.classList.contains('u-in')) return;
         if (stagger) node.style.setProperty('--u-i', String(index % 6));
-        observer.observe(node);
+        targetObserver.observe(node);
       });
     };
 
     const start = () => {
       BLOCKS.forEach((selector) => observe(selector, false));
       ITEMS.forEach((selector) => observe(selector, true));
+      SERVICE_ITEMS.forEach((selector) => observe(selector, true, serviceObserver));
     };
 
     // While the opening sequence holds the artwork on screen, nothing else may reveal —
@@ -101,6 +115,7 @@ export function SiteMotion() {
     return () => {
       introWatcher?.disconnect();
       observer.disconnect();
+      serviceObserver.disconnect();
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       if (frame) cancelAnimationFrame(frame);

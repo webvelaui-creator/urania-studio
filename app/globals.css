@@ -868,6 +868,10 @@ html[data-urania-intro='reveal'] [data-hero-goddess] { transition: filter 520ms 
     transform 820ms var(--ease-settle) calc(var(--u-i, 0) * 90ms);
 }
 .u-motion .u-in { opacity: 1 !important; transform: none !important; }
+.u-motion .listing-grid > * {
+  transition-duration: 620ms;
+  transition-delay: calc(var(--u-i, 0) * 60ms);
+}
 
 /* --- Typography ---------------------------------------------------------- */
 
