@@ -15,6 +15,9 @@
   --site-gutter: clamp(1.5rem, 5vw, 6rem);
   --page: min(calc(100% - var(--site-gutter) - var(--site-gutter)), 100rem);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-slow: 520ms;
   color-scheme: dark;
 }
 
@@ -26,7 +29,7 @@ body {
   color: var(--text);
   font-family: var(--font-body), sans-serif;
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.58;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
@@ -424,6 +427,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
 @media (max-width: 480px) {
   :root { --site-gutter: 0.75rem; --page: calc(100% - var(--site-gutter) - var(--site-gutter)); }
   .wordmark small { display: none; }
+  .wordmark small { display: none; }
   .hero__goddess { min-height: 20rem; }
   h1 { font-size: clamp(3.1rem, 15vw, 4.2rem); }
   .section-heading { align-items: start; flex-direction: column; gap: 1rem; }
@@ -524,7 +528,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
    ========================================================================== */
 
 :root {
-  --ease-settle: cubic-bezier(0.16, 0.84, 0.24, 1);
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 3px;
   --glow-warm: rgba(116, 35, 7, 0.55);
@@ -565,7 +569,7 @@ body::after {
 .site-header {
   border-bottom-color: transparent;
   background: rgba(28, 1, 1, 0.55);
-  transition: padding 320ms var(--ease-soft), background 320ms var(--ease-soft), border-color 320ms var(--ease-soft), box-shadow 320ms var(--ease-soft), opacity 900ms var(--ease-settle) 260ms, transform 1100ms var(--ease-settle) 260ms;
+  transition: padding var(--motion-base) var(--ease-soft), background var(--motion-base) var(--ease-soft), border-color var(--motion-base) var(--ease-soft), box-shadow var(--motion-base) var(--ease-soft), opacity var(--motion-slow) var(--ease-settle) 100ms, transform var(--motion-slow) var(--ease-settle) 100ms;
 }
 html[data-scrolled='true'] .site-header {
   padding-block: 0.7rem;
@@ -818,7 +822,7 @@ html[data-urania-intro='hold'] [data-hero-goddess-wrapper] {
 }
 html[data-urania-intro='hold'] [data-hero-goddess] {
   opacity: 0;
-  transition: opacity 1000ms ease-out, filter 520ms var(--ease-soft);
+  transition: opacity 480ms var(--ease-settle), filter var(--motion-base) var(--ease-soft);
   filter: drop-shadow(0 2.5rem 4rem rgba(0, 0, 0, 0.7)) saturate(1.06) contrast(1.04);
 }
 html[data-urania-intro='hold'] [data-hero-goddess][data-hero-image-ready='true'] {
@@ -840,7 +844,7 @@ html[data-urania-intro='hold'] [data-hero-goddess][data-hero-image-ready='true']
    mirrored in HeroIntro. */
 html[data-urania-intro='reveal'] [data-hero-goddess-wrapper] {
   transform: translateY(33.333%);
-  animation: heroGoddessSettleDown 2000ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: heroGoddessSettleDown 1200ms var(--ease-settle) forwards;
   will-change: transform;
 }
 html[data-urania-intro='reveal'] [data-hero-goddess] { transition: filter 520ms var(--ease-soft); }
@@ -849,8 +853,8 @@ html[data-urania-intro='reveal'] [data-hero-goddess] { transition: filter 520ms 
 
 .u-motion main > section:not([data-urania-hero]) {
   opacity: 0;
-  transform: translateY(2.25rem);
-  transition: opacity 900ms var(--ease-settle), transform 900ms var(--ease-settle);
+  transform: translateY(1rem);
+  transition: opacity var(--motion-slow) var(--ease-settle), transform var(--motion-slow) var(--ease-settle);
 }
 .u-motion .entry-grid > *,
 .u-motion .listing-grid > *,
@@ -862,15 +866,15 @@ html[data-urania-intro='reveal'] [data-hero-goddess] { transition: filter 520ms 
 .u-motion .about-gallery > *,
 .u-motion .gallery-block > * {
   opacity: 0;
-  transform: translateY(1.6rem);
+  transform: translateY(0.875rem);
   transition:
-    opacity 820ms var(--ease-settle) calc(var(--u-i, 0) * 90ms),
-    transform 820ms var(--ease-settle) calc(var(--u-i, 0) * 90ms);
+    opacity 480ms var(--ease-settle) calc(var(--u-i, 0) * 60ms),
+    transform 480ms var(--ease-settle) calc(var(--u-i, 0) * 60ms);
 }
 .u-motion .u-in { opacity: 1 !important; transform: none !important; }
 .u-motion .listing-grid > * {
-  transition-duration: 740ms;
-  transition-delay: calc(var(--u-i, 0) * 75ms);
+  transition-duration: 560ms;
+  transition-delay: calc(var(--u-i, 0) * 65ms);
 }
 
 /* --- Typography ---------------------------------------------------------- */
@@ -931,9 +935,9 @@ a:hover .text-link { gap: 0.8rem; }
   transform: translateY(101%);
   transition: transform 420ms var(--ease-settle);
 }
-.button:hover { border-color: var(--champagne); background: transparent; box-shadow: 0 1rem 2rem -1rem rgba(116, 35, 7, 0.9); transform: translateY(-2px); }
+.button:hover { border-color: var(--champagne); background: transparent; box-shadow: 0 0.75rem 1.5rem -1rem rgba(116, 35, 7, 0.72); transform: translateY(-1px); }
 .button:hover::before { transform: translateY(0); }
-.button:active { transform: translateY(0); }
+.button:active { transform: translateY(0) scale(0.98); }
 
 /* --- Cards -------------------------------------------------------------- */
 

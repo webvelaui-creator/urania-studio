@@ -24,7 +24,7 @@ if(home)r.dataset.uraniaIntro='hold';
 setTimeout(function(){
 if(r.dataset.uraniaIntro==='hold')r.dataset.uraniaIntro='done';
 if(!document.body||!document.body.dataset.motionReady)r.classList.remove('u-motion');
-},3000);
+},2200);
 }catch(e){}})();`;
 
 const display = Cormorant_Garamond({

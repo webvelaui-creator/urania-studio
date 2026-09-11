@@ -76,10 +76,12 @@ export function SiteMotion() {
     const serviceObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle('u-in', entry.isIntersecting);
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('u-in');
+          serviceObserver.unobserve(entry.target);
         });
       },
-      { rootMargin: '0px 0px 8% 0px', threshold: 0.01 },
+      { rootMargin: '0px 0px 0px', threshold: 0.01 },
     );
 
     const observe = (selector: string, stagger: boolean, targetObserver = observer) => {

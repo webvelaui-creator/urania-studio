@@ -3,11 +3,11 @@
 import { useEffect } from 'react';
 
 /** A quick visual beat before the interface arrives. */
-const HOLD_MS = 1000;
+const HOLD_MS = 600;
 /** Length of the settle. Must match the `reveal` transform transition in `globals.css`. */
-const REVEAL_MS = 2000;
+const REVEAL_MS = 1200;
 /** The intro never waits longer than this for the artwork to decode. */
-const DECODE_TIMEOUT_MS = 700;
+const DECODE_TIMEOUT_MS = 500;
 
 /**
  * Plays the opening sequence on the homepage. The artwork holds the screen on its own,

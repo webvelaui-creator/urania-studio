@@ -6,7 +6,7 @@ const DELAY_MS = 3_000;
 
 export function ServicesAutoScroll() {
   useEffect(() => {
-    let timer: ReturnType<typeof window.setTimeout>;
+    let timer: number | undefined;
 
     const scheduleScroll = () => {
       window.clearTimeout(timer);
