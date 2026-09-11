@@ -244,6 +244,7 @@ h1 { max-width: 11ch; margin-top: clamp(1.8rem, 3vw, 3rem); font-size: clamp(3.3
 .page-hero--full-media .page-hero-copy > p:last-child { color: var(--text); }
 .listing-section { max-width: 88rem; margin-inline: auto; padding: clamp(2rem, 4vw, 4.5rem) 0; }
 .listing-grid, .listing-grid-three { display: grid; grid-template-columns: 1fr; gap: 0; }
+#services-list { scroll-margin-top: calc(var(--header-h) + 1rem); }
 
 /* --- Space selector ----------------------------------------------------- */
 

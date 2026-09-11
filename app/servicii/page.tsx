@@ -21,8 +21,8 @@ export default function ServicesPage() {
         title="Tot ce ai nevoie dincolo de spațiu"
         intro="Suport atent pentru ca proiectul să funcționeze — de la pregătire și configurație până la desfășurare și documentare."
       />
-      <section className="listing-section" id="services-list" aria-label="Servicii disponibile">
-        <div className="listing-grid">
+      <section className="listing-section" aria-label="Servicii disponibile">
+        <div className="listing-grid" id="services-list">
           {services.map((service, index) => (
             <EditorialCard
               item={service}

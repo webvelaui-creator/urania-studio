@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const DELAY_MS = 5_000;
+const DELAY_MS = 3_000;
 
 export function ServicesAutoScroll() {
   useEffect(() => {
