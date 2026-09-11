@@ -19,11 +19,14 @@ export function ServicesAutoScroll() {
     };
 
     scheduleScroll();
-    window.addEventListener('pageshow', scheduleScroll);
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) scheduleScroll();
+    };
+    window.addEventListener('pageshow', handlePageShow);
 
     return () => {
       window.clearTimeout(timer);
-      window.removeEventListener('pageshow', scheduleScroll);
+      window.removeEventListener('pageshow', handlePageShow);
     };
   }, []);
 
