@@ -1,5 +1,6 @@
 import { EditorialCard } from '@/components/editorial-card';
 import { PageHero } from '@/components/page-hero';
+import { ServicesAutoScroll } from '@/components/services-auto-scroll';
 import { services } from '@/data/site-content';
 import { createPageMetadata } from '@/lib/seo';
 
@@ -14,12 +15,13 @@ export const metadata = createPageMetadata({
 export default function ServicesPage() {
   return (
     <main id="content">
+      <ServicesAutoScroll />
       <PageHero
         eyebrow="Servicii / Urania Studio"
         title="Tot ce ai nevoie dincolo de spațiu"
         intro="Suport atent pentru ca proiectul să funcționeze — de la pregătire și configurație până la desfășurare și documentare."
       />
-      <section className="listing-section" aria-label="Servicii disponibile">
+      <section className="listing-section" id="services-list" aria-label="Servicii disponibile">
         <div className="listing-grid">
           {services.map((service, index) => (
             <EditorialCard
