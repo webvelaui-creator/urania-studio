@@ -54,7 +54,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main id="content">
+    <main id="content" className="detail-page detail-page--service">
       <JsonLd data={serviceSchema} />
       <section className="detail-hero">
         <div className="detail-heading">

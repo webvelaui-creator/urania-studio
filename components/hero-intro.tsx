@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 const HOLD_MS = 600;
 /** Length of the settle. Must match the `reveal` transform transition in `globals.css`. */
 const REVEAL_MS = 1200;
+/** A quiet beat after the title and statue settle, before the interface arrives. */
+const INTERFACE_DELAY_MS = 100;
 /** The intro never waits longer than this for the artwork to decode. */
 const DECODE_TIMEOUT_MS = 500;
 
@@ -39,10 +41,18 @@ export function HeroIntro() {
     const settle = () => {
       if (cancelled || root.dataset.uraniaIntro !== 'hold') return;
       root.dataset.uraniaIntro = 'reveal';
-      // A small buffer avoids releasing the hooks in the same frame as the transform ends.
-      later(REVEAL_MS + 30, () => {
-        if (cancelled) return;
-        root.dataset.uraniaIntro = 'done';
+      // The wordmark comes in with the statue. Once both have settled, the header,
+      // frame and metadata arrive together after a deliberate pause.
+      const interfaceDelay = window.matchMedia('(min-width: 801px)').matches
+        ? INTERFACE_DELAY_MS
+        : 0;
+      later(REVEAL_MS + interfaceDelay, () => {
+        if (cancelled || root.dataset.uraniaIntro !== 'reveal') return;
+        root.dataset.uraniaIntro = 'interface';
+        later(510, () => {
+          if (cancelled) return;
+          root.dataset.uraniaIntro = 'done';
+        });
       });
     };
 

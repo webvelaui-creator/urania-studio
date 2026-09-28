@@ -163,9 +163,9 @@ export const spaces: SiteItem[] = [
     shortDescription:
       'O sală flexibilă, orientată spre scenă și public, pentru formate culturale, artistice și evenimente.',
     longDescription:
-      'Spațiul principal Urania: o sală reconfigurabilă cu scenă și așezare adaptabilă, pregătită să găzduiască formate diverse fără a le impune un tipar.',
+      'Urania Black Box oferă un cadru controlat pentru lucru artistic și cultural: un spațiu versatil, pregătit pentru repetiții, cercetare și producție. Un spațiu în care se nasc lumi întregi, unde fiecare dimensiune devine materie vie și prinde formă în construcția propriilor idei. Sala dispune de o suprafață generoasă, cu dimensiuni de 11,00 m × 8,30 m și o înălțime de 5,00 m. Zona scenică are dimensiuni de 7,00 m × 5,40 m, cu o înălțime de 3,00 m, oferind un cadru potrivit pentru spectacole, filmări, evenimente private, castinguri și diverse producții artistice.',
     mediaLabel: 'SPACE IMAGE',
-    image: { src: '/images/urania/scena.webp', alt: 'Scena — Black Box Urania', objectPosition: 'center' },
+    image: { src: '/images/urania/black-box-lights-off.jpg', alt: 'Scena — Black Box Urania, cu luminile stinse', objectPosition: 'center' },
     cta: 'Verifică disponibilitatea',
     sections: [
       { title: 'Artele spectacolului', items: ['Teatru independent', 'Performance contemporan', 'Teatru-dans', 'Stand-up', 'Improvizație', 'Poezie și lecturi performative', 'Cabaret'] },
@@ -246,6 +246,8 @@ export const contactDetails = {
   address: 'Strada Horea, nr. 4, Cluj-Napoca',
   phone: '+40 739 333 357',
   phoneHref: 'tel:+40739333357',
+  whatsAppHref: 'https://wa.me/40739333357',
+  facebookHref: 'https://web.facebook.com/profile.php?id=61586391453182&locale=ro_RO',
 };
 
 export function getService(slug: string) {

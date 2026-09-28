@@ -85,10 +85,6 @@ export default function Home() {
           <h1 id="home-title">Urania</h1>
           <p>Creative Studio</p>
         </div>
-        <a className="hero__cue" href="#explore-title" data-hero-main-ui>
-          <span>Derulează</span>
-          <i aria-hidden="true" />
-        </a>
       </section>
 
       <section className="entry-section" aria-labelledby="explore-title">

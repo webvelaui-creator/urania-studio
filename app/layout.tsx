@@ -58,7 +58,10 @@ export const metadata: Metadata = {
     'producție tehnică evenimente',
     'Urania Studio',
   ],
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [{ url: '/images/logo.png', type: 'image/png' }],
+    apple: [{ url: '/images/logo.png', type: 'image/png' }],
+  },
   alternates: { canonical: '/' },
   robots: {
     index: true,

@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { navigation } from '@/data/site-content';
 
@@ -14,8 +15,14 @@ export function SiteHeader() {
       {/* Reading progress, driven by the --u-progress custom property in SiteMotion. */}
       <span className="header-progress" aria-hidden="true" />
       <Link className="wordmark" href="/" aria-label="Urania Studio — pagina principală">
-        <span>Urania</span>
-        <small>Studio / Cluj-Napoca</small>
+        <Image
+          className="wordmark__image"
+    src="/images/logo-wordmark.svg"
+          alt="Urania Studio"
+    width={1774}
+    height={887}
+          priority
+        />
       </Link>
       <button
         className="menu-button"

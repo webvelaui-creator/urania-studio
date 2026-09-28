@@ -29,6 +29,16 @@ export default async function SpaceDetailPage({ params }: PageProps) {
   const space = getSpace(slug);
   if (!space) notFound();
   const path = `/spatii/${space.slug}/`;
+  const detailTitle = space.slug === 'scena-black-box' ? 'Black Box' : space.title;
+  const galleryImages = space.slug === 'scena-black-box'
+    ? [
+      { src: '/images/urania/black-box-lights-off.jpg', alt: 'Scena Black Box Urania cu luminile stinse', objectPosition: 'center' },
+      { src: '/images/urania/black-box-lights-on.jpg', alt: 'Scena Black Box Urania iluminată pentru eveniment', objectPosition: 'center' },
+      { src: '/images/urania/black-box-stage-disco.png', alt: 'Scena Black Box cu lumini roșii și albastre', objectPosition: 'center' },
+      { src: '/images/urania/black-box-audience.png', alt: 'Scena Black Box pregătită pentru public', objectPosition: 'center' },
+      { src: '/images/urania/black-box-golden-stage.png', alt: 'Scena Black Box cu instalație luminoasă aurie', objectPosition: 'center' },
+    ]
+    : [];
   const spaceSchema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -58,22 +68,29 @@ export default async function SpaceDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main id="content">
+    <main id="content" className="detail-page detail-page--space">
       <JsonLd data={spaceSchema} />
       <section className="detail-hero">
         <div className="detail-heading">
           <Link className="back-link" href="/spatii/">← Toate spațiile</Link>
           <p className="eyebrow">{space.eyebrow}</p>
-          <h1>{space.title}</h1>
+          <h1>{detailTitle}</h1>
           <p className="detail-intro">{space.longDescription}</p>
         </div>
-        <MediaPlaceholder label={space.mediaLabel} image={space.image} variant="hero" />
+        {space.slug === 'scena-black-box' ? (
+          <div className="detail-hero__video-card">
+            <video autoPlay muted loop playsInline preload="auto" aria-label="Tur video al sălii Black Box">
+              <source src="/videos/black-box-ambience.mp4" type="video/mp4" />
+            </video>
+          </div>
+        ) : <MediaPlaceholder label={space.mediaLabel} image={space.image} variant="hero" />}
       </section>
 
       <section className="gallery-block" aria-labelledby="gallery-title">
-        <div><p className="eyebrow">Spațiul în imagini</p><h2 id="gallery-title">Galerie</h2></div>
-        <MediaPlaceholder label="GALLERY IMAGE" variant="gallery" />
-        <MediaPlaceholder label="GALLERY IMAGE" variant="gallery" />
+        <h2 id="gallery-title" className="sr-only">Galerie</h2>
+        {galleryImages.length
+          ? galleryImages.map((image) => <MediaPlaceholder image={image} key={image.src} label="GALLERY IMAGE" variant="gallery" />)
+          : <><MediaPlaceholder label="GALLERY IMAGE" variant="gallery" /><MediaPlaceholder label="GALLERY IMAGE" variant="gallery" /></>}
       </section>
 
       {space.sections?.length ? (

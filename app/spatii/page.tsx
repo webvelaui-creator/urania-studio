@@ -7,13 +7,13 @@ export const metadata = createPageMetadata({
   title: 'Spații de găzduire',
   description: 'Descoperă cele trei spații Urania Studio și cadrul potrivit pentru proiectul tău.',
   path: '/spatii/',
-  image: '/images/urania/scena.webp',
+  image: '/images/urania/black-box-lights-off.jpg',
   imageAlt: 'Scena Black Box Urania',
 });
 
 export default function SpacesPage() {
   return (
-    <main id="content">
+    <main id="content" className="spaces-page">
       <section className="spaces-showcase" aria-label="Spații disponibile">
         <div className="spaces-showcase__heading">
           <div>
