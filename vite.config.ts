@@ -24,7 +24,7 @@ const devAllowedHosts = process.env.DEV_ALLOWED_HOSTS?.split(',')
 
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
-  compatibility_flags: ['nodejs_compat'],
+  compatibility_flags: ['nodejs_compat', 'global_fetch_strictly_public'],
   d1_databases: d1
     ? [
         {
